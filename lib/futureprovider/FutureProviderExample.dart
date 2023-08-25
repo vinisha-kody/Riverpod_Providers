@@ -28,7 +28,7 @@ class FutureProviderExamplePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
 
-
+    // the below line will listen to changes
     final counter=ref.watch(counterprovider);
 
     return Scaffold(
