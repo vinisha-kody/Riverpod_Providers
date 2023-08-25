@@ -4,6 +4,8 @@ import 'package:riverpod_providers/futureprovider/FutureProviderExample.dart';
 import 'package:riverpod_providers/futureprovider/FutureProviderCounter.dart';
 
 
+// conterprovider is the object of the FutureProvider
+// the above line will return 0 after delay of 1 sec
 final counterprovider=FutureProvider<int>((ref) async{
   return await Future.delayed(Duration(seconds: 1),() => 0);
 });
@@ -26,6 +28,7 @@ class FutureProviderExamplePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
 
+
     final counter=ref.watch(counterprovider);
 
     return Scaffold(
@@ -33,7 +36,6 @@ class FutureProviderExamplePage extends ConsumerWidget {
         floatingActionButton:
         FloatingActionButton(
           onPressed: (){
-            ref.read(counterprovider);
           },
           child: Icon(Icons.add),
           backgroundColor: Color(0xff152943),
@@ -49,7 +51,7 @@ class FutureProviderExamplePage extends ConsumerWidget {
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Text("You have pushed the button this many times:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w500,fontSize: 17),),
               ),
-              Text('${counter}',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w500,fontSize: 30))
+              Text('${counter.value}',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w500,fontSize: 30))
             ],
           ),
         )

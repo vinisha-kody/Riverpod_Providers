@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_providers/statenotifierprovider/StateNotifierExample.dart';
 
+
+
+
+//this is the value which will be incremented after 1 second of delay
 int _countervalue=0;
 
+
+
+//This is the Object of the StreamProvider
 final counterprovider=StreamProvider<int>((ref) {
   return Stream.periodic(Duration(seconds: 1),(_) => _countervalue++);
 });
+
+
 
 class StreamProviderExample extends StatelessWidget {
   const StreamProviderExample({super.key});
@@ -19,11 +28,14 @@ class StreamProviderExample extends StatelessWidget {
     );
   }
 }
+
+
 class StreamProviderExamplePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
 
+    //
     final counter=ref.watch(counterprovider);
 
     return Scaffold(
@@ -46,7 +58,7 @@ class StreamProviderExamplePage extends ConsumerWidget {
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Text("You have pushed the button this many times:",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w500,fontSize: 17),),
               ),
-              Text('${counter}',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w500,fontSize: 30))
+              Text('${counter.value}',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w500,fontSize: 30))
             ],
           ),
         )

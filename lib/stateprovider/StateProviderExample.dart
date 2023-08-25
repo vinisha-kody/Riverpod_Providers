@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_providers/stateprovider/StateProviderExample.dart';
 
+/// [counterprovider] is the object of the StateProvider
+/// here the type of state handled by the Stateprovider is iny
 final counterprovider=StateProvider<int>((ref) => 0);
 
 class StateProviderExample extends StatelessWidget {
@@ -20,6 +22,7 @@ class StateProviderExamplePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
 
+    /// the watch method will listen to changes made in the provider and return the int value to [counter]
     final counter=ref.watch(counterprovider);
 
     return Scaffold(
@@ -27,6 +30,8 @@ class StateProviderExamplePage extends ConsumerWidget {
         floatingActionButton:
         FloatingActionButton(
           onPressed: (){
+
+            /// the [notifier] is used to made changes even in read method which gives access to update() method using which we can update the state
             ref.read(counterprovider.notifier).update((state) => state+1);
           },
           child: Icon(Icons.add),

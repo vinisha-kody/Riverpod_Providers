@@ -6,6 +6,20 @@ import 'package:riverpod_providers/statenotifierprovider/StateNotifierProviderEx
 import 'package:riverpod_providers/futureprovider/FutureProviderExample.dart';
 import 'package:riverpod_providers/streamprovider/StreamProviderExample.dart';
 
-void main() => runApp(ProviderScope(child: StreamProviderExample()));
+
+// The above line will open the screen which displays the counter application using StreamProvider
+//void main() => runApp(ProviderScope(child: StreamProviderExample()));
+
+// The above line will open the screen which displays the counter application using FutureProvider
+void main() => runApp(ProviderScope(child: FutureProviderExample()));
+
+// The above line will open the screen which displays the counter application using StateNotifierProvider
+//void main() => runApp(ProviderScope(child: StateNotifierProviderExample()));
+
+// The above line will open the screen which displays the counter application using StateProvider
+// void main() => runApp(ProviderScope(child: StateProviderExample()));
+
+// The above line will open the screen which displays the counter application using ChangeNotifierProviderProvider
+// void main() => runApp(ProviderScope(child: ChangeNotifierProviderExample()));
 
 

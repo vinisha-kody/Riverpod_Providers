@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_providers/statenotifierprovider/StateNotifierExample.dart';
 
+/// [counterprovider] is the object of the StateNotifierProvider
 final counterprovider=StateNotifierProvider<StateNotifierExample,int>((ref) => StateNotifierExample());
 
 class StateNotifierProviderExample extends StatelessWidget {
@@ -20,6 +21,7 @@ class StateNotifierProviderExamplePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
 
+    /// [counter] will store the changes made to the [counterprovider]
     final counter=ref.watch(counterprovider);
 
     return Scaffold(
@@ -27,6 +29,8 @@ class StateNotifierProviderExamplePage extends ConsumerWidget {
         floatingActionButton:
         FloatingActionButton(
           onPressed: (){
+
+            /// using [notifier] we can made changes even in the read method
             ref.read(counterprovider.notifier).increment();
           },
           child: Icon(Icons.add),
